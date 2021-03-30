@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema#",
+  "id": "https://cdn.murmurations.network/schemas/offer-v1.json",
+  "title": "An offer",
+  "description": "An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.",
+  "type": "object",
+  "properties": {
+    "linked_schemas": {
+      "$ref": "../fields/linked_schemas-v1.json"
+    },
+    "name": {
+      "$ref": "../fields/name-v1.json"
+    },
+    "description": {
+      "$ref": "../fields/description-v1.json"
+    },
+    "location": {
+      "$ref": "../fields/location-v1.json"
+    },
+    "area_served": {
+      "$ref": "../fields/area_served-v1.json"
+    },
+    "image": {
+      "$ref": "../fields/image-v1.json"
+    },
+    /*
+    "acceptedPaymentMethod": {
+      //may need to be expanded into sub objects for LoanOrCredit https://schema.org/LoanOrCredit and https://schema.org/LoanOrCredit //
+      "title": "Payment method",
+      "description": "The payment method(s) accepted by seller for this offer.",
+      "type": "string",
+      "enum": [
+        "mutual_credit",
+        "currency", // may need to be expanded as per https://schema.org/currency
+        "crypto"
+      ],
+      "enumNames": [
+        "Mutal Credit",
+        "Fiat Currency",
+        "Crypto currency"
+      ]
+    },
+    */
+    "price": {
+      "title": "Price",
+      "description": "The offer price of a product or service.",
+      "type": "number",
+      "minimum": 0,
+      "context": "https://schema.org/price"
+    },
+    "priceCurrency": {
+      "title": "Price currency",
+      "description": "The currency of the price",
+      "type": "text",
+      "context": "https://schema.org/priceCurrency"
+    },
+    "offeredBy": {
+      "title": "Offered by",
+      "description": "The organization or person making the offer.",
+      "type": "array", //?? needs to link to the name & URL of the person / org making the offer
+      "context": "https://schema.org/offeredBy"
+    }
+  },
+  "required": ["linked_schemas", "name",],
+  "metadata": {
+    "creator": {
+      "name": "Murmurations Network",
+      "url": "https://murmurations.network/"
+    },
+    "schema": {
+      "name": "murmurations_offer-v1",
+      "version": 1,
+      "purpose": "An offer to transfer some rights to an item or to provide a service",
+      "url": "https://schema.org/Offer"
+    }
+  }
+}
